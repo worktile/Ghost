@@ -532,6 +532,24 @@ describe('User Model', function run() {
                 });
             });
         });
+
+        describe('password is hashed', function () {
+            it('make sure password saved in the model is hashed after edit', function () {
+                return UserModel.changePassword({
+                    newPassword: 'hash_th1s_thing',
+                    ne2Password: 'hash_th1s_thing',
+                    oldPassword: 'Sl1m3rson99',
+                    user_id: testUtils.DataGenerator.Content.users[0].id
+                }, testUtils.context.owner)
+                    .then(() => {
+                        return UserModel.findOne({id: testUtils.DataGenerator.Content.users[0].id});
+                    })
+                    .then(function (user) {
+                        should.exist(user);
+                        user.get('password').should.not.equal('hash_th1s_thing');
+                    });
+            });
+        });
     });
 
     describe('User setup', function () {
