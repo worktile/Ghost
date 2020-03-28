@@ -1,0 +1,58 @@
+{{!--
+This header template is shared across all the pages.
+--}}
+
+<header class="wt-header" uk-sticky>
+  <nav class="wp uk-navbar-container uk-navbar-transparent" uk-navbar>
+    <div class="uk-navbar-left">
+      {{#if @site.logo}}
+      <a href="{{@site.url}}" class="wt-logo uk-navbar-item uk-logo uk-padding-remove">
+        <!-- <img src="{{@site.logo}}" alt="{{@site.title}}"> -->
+        {{!-- <img src="{{asset "images/logo.svg" }}" alt="" srcset="" /> --}}
+        <img class="uk-preserve" src="https://cdn.worktile.com/assets/images/next/logo/logo.svg " uk-svg>
+      </a>
+      {{else}}
+      <a href="{{@site.url}}" class="wt-logo uk-navbar-item uk-logo uk-padding-remove">
+        {{@site.title}}
+      </a>
+      {{/if}}
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="wt-header-nav uk-navbar-nav uk-visible@s">
+        {{#if @site.navigation}}
+        {{navigation}}
+        {{/if}}
+      </ul>
+      <div class="uk-navbar-item wt-header-login uk-visible@s">
+        <a
+          href="https://worktile.com/signin"
+          class="wt-header-login-btn uk-button uk-button-default"
+        >
+          登录
+        </a>
+        <a
+          href="https://worktile.com/signup"
+          class="wt-header-register-btn uk-button uk-button-primary"
+        >
+          注册
+        </a>
+      </div>
+      <a class="uk-navbar-toggle uk-hidden@s" uk-navbar-toggle-icon href="#"
+        uk-toggle="target: #offcanvas-nav-primary"></a>
+    </div>
+  </nav>
+</header>
+
+<div id="offcanvas-nav-primary" uk-offcanvas="overlay: true;flip: true">
+  <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+
+    <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+      {{#if @site.navigation}}
+      {{navigation}}
+      {{/if}}
+
+    </ul>
+
+  </div>
+</div>

@@ -1,0 +1,67 @@
+{{!--
+This template is used for the index page.
+It can be used also as the home page or the default page.
+--}}
+
+{{!-- The tag below means: insert everything in this file
+into the {body} of the default.hbs template --}}
+{{!< default}}
+
+
+<div class="wp wt-main">
+
+  {{#is "home"}}
+  {{#get "posts" filter="featured:true" limit="1" include="authors,tags" as |featured|}}
+  {{#foreach featured}}
+  <div class="wt-headlines">
+    <div class="uk-grid-match uk-grid-small " uk-grid>
+      <div class="uk-width-2-3@s">
+        <a href="{{url}}">
+          <div class="wt-headlines-img uk-background-cover" data-src="{{img_url feature_image}}" uk-img>
+          </div>
+        </a>
+      </div>
+      <div class="uk-width-1-3@s">
+        <div class="wt-headlines-title uk-flex uk-flex-column">
+          <div>
+            <span class="uk-label">{{tags autolink="false" limit="1" }}</span>
+          </div>
+          <div class="title">
+            <h1> <a href="{{url}}">{{title}}</a></h1>
+            {{#if custom_excerpt}}<p><a href="{{url}}">{{custom_excerpt}}</a></p>{{/if}}
+          </div>
+          <div class="wt-headlines-title-footer uk-flex uk-flex-between uk-flex-middle">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-auto">
+                <img class="uk-border-circle" width="40" height="40"
+                  src="{{img_url primary_author.profile_image size="xs"}}">
+              </div>
+              <div class="uk-width-expand">
+                <span>{{authors}}</span>
+              </div>
+            </div>
+            <time>{{date published_at format="YYYY-MM-DD"}}</time>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/foreach}}
+  {{/get}}
+  {{/is}}
+
+
+  <div class="wt-card-tag uk-card uk-card-default uk-card-body uk-margin">
+    <ul class="wt-tag-nav uk-flex uk-flex-between">
+      <li class="active"><a href="#">全部</a></li>
+      {{#get 'tags' limit='13' as |tags|}}
+      {{#foreach tags as |my_tag|}}
+      <li class="{{slug}}"><a href="{{ my_tag.url }}">{{ my_tag.name }}</a></li>
+      {{/foreach}}
+      {{/get}}
+    </ul>
+  </div>
+
+  {{!-- The tag below iterates over all the posts --}}
+  {{> "loop"}}
+</div>

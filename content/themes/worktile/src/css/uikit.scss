@@ -1,0 +1,55 @@
+$divider-small-border: $gray-400;
+$nav-primary-item-font-size: $fs-18;
+
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+@mixin hook-base-body() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin hook-card-default() {
+  box-shadow: $box-shadow;
+  border-radius: $radius;
+}
+@mixin hook-card-header() {
+  padding: 1.2rem;
+}
+@mixin hook-card-default-header() {
+  border-bottom: 1px solid $gray-200;
+}
+@mixin hook-card-default-footer() {
+  // border-top: 1px solid $gray-100;
+  border: none;
+}
+@mixin hook-dropdown() {
+  box-shadow: 0 2px 40px -15px rgba(146, 146, 146, 0.52);
+  border-radius: $radius;
+}
+
+@mixin hook-subnav-pill-item-active() {
+  border-radius: $radius;
+}
+@mixin hook-pagination-item() {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $box-shadow;
+  border-radius: $radius;
+  background-color: $white;
+}
+
+@mixin hook-label {
+  border-radius: 3px;
+  padding: 2px 10px;
+  font-size: $fs-12;
+}
+
+@mixin hook-button() {
+  border-radius: 4px;
+}
+
+@import "uikit/src/scss/uikit-theme.scss";

@@ -1,0 +1,64 @@
+@font-face {
+	font-family: "Worktile-Icons";
+	src: url('https://cdn.worktile.com/assets/fonts/Worktile-Icons.eot?v=8.0.0+2019111901');
+	src: url('https://cdn.worktile.com/assets/fonts/Worktile-Icons.eot?#iefix&v=8.0.0+2019111901') format('eot'),
+		url('https://cdn.worktile.com/assets/fonts/Worktile-Icons.woff2?v=8.0.0+2019111901') format('woff2'),
+		url('https://cdn.worktile.com/assets/fonts/Worktile-Icons.woff?v=8.0.0+2019111901') format('woff'),
+		url('https://cdn.worktile.com/assets/fonts/Worktile-Icons.ttf?v=8.0.0+2019111901') format('truetype'),
+		url('https://cdn.worktile.com/assets/fonts/Worktile-Icons.svg#Worktile-Icons?v=8.0.0+2019111901') format('svg');
+}
+
+@mixin wt-icon-styles {
+	font-family: "Worktile-Icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%wt-icon {
+	@include wt-icon-styles;
+}
+
+@function wt-icon-char($filename) {
+	$char: "";
+
+    @if $filename == wechat {
+		$char: "\E059";
+    }
+    
+    @if $filename == weibo {
+		$char: "\E05A";
+    }
+
+    @if $filename == rss {
+		$char: "\E058";
+	}
+    
+	@return $char;
+}
+
+@mixin wt-icon($filename, $insert: before, $extend: true) {
+	&:#{$insert} {
+		@if $extend {
+			@extend %wt-icon;
+		} @else {
+			@include wt-icon-styles;
+		}
+		content: wt-icon-char($filename);
+	}
+}
+
+.wt-icon-wechat {
+	@include wt-icon(wechat);
+}
+.wt-icon-weibo {
+	@include wt-icon(weibo);
+}
+.wt-icon-rss {
+	@include wt-icon(rss);
+}

@@ -96,17 +96,18 @@ projectFilesBackup
 .dist
 .tmp
 
+.history
+
 /core/server/data/export/exported*
 /content/tmp/*
 /content/data/*
 /content/logs/*
 /content/settings/*
 /content/apps/**/*
-/content/themes/**/*
 /content/images/**/*
 /content/adapters/storage/**/*
 /content/adapters/scheduling/**/*
-!/content/themes/casper
+
 !/README.md
 !/content/**/README.md
 

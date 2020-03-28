@@ -1,0 +1,38 @@
+{
+  "author": {
+    "email": "theonlyz@foxmail.com",
+    "name": "worktile",
+    "url": "https://worktile.com"
+  },
+  "config": {
+    "posts_per_page": 9
+  },
+  "demo": "",
+  "description": "worktile",
+  "engines": {
+    "ghost": ">=2.0.0",
+    "ghost-api": "v2"
+  },
+  "gpm": {
+    "type": "theme",
+    "categories": [
+      "Beautiful",
+      "Clean",
+      "Magazine",
+      "Minimal",
+      "Responsive"
+    ]
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme"
+  ],
+  "license": "MIT",
+  "name": "worktile",
+  "screenshots": {
+    "desktop": "assets/screenshot-desktop.jpg",
+    "mobile": "assets/screenshot-mobile.jpg"
+  },
+  "version": "1.0.0"
+}

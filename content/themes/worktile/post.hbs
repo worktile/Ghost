@@ -1,0 +1,78 @@
+{{!--
+This template is used for the post page.
+--}}
+
+{{!-- The tag below means: insert everything in this file
+into the {body} of the default.hbs template --}}
+{{!< default}}
+
+<div class="wt-main">
+<div class="wp wt-content-post">
+  <div class="uk-grid-medium" uk-grid>
+    <div class="uk-width-3-4@s">
+      <div class="wt-content uk-card uk-card-default">
+        <div class="uk-card-body uk-flex uk-flex-between uk-flex-column">
+          {{#post}}
+          <article class="uk-article">
+            {{#if primary_tag}}
+            <a href="{{primary_tag.url}}" class="m-heading__meta__tag">
+              <span class="uk-label">{{primary_tag.name}}</span>
+            </a>
+            {{/if}}
+            <h1 class="uk-article-title">
+              {{title}}
+            </h1>
+            <p class="uk-article-meta"> {{date published_at format="YYYY-MM-DD"}} · <a
+                href="{{primary_author.url}}">{{primary_author.name}}</a></p>
+            <hr class="uk-divider-small">
+            <div class="the_content">
+              {{content}}
+            </div>
+          </article>
+          {{/post}}
+        </div>
+      </div>
+    </div>
+    <div id="sidebar" class="uk-width-1-4@s">
+      <div class="sidebar-box">
+        <div uk-sticky="offset: 100;bottom: #sidebar">
+          <div class="item uk-card uk-card-default">
+            <div class="uk-card-header">
+              <h4 class="uk-card-title">相关阅读</h4>
+            </div>
+            <div class="uk-card-body">
+              <ul class="list">
+                {{#get "posts" limit="3" filter="tags:[{{post.tags}}]+id:-{{post.id}}" include="tags,authors" as
+                |related|}}
+                {{#foreach posts}}
+                <li>
+                  <a href="{{url}}">
+                    <div class="uk-inline">
+                      <img src="{{img_url feature_image size="m"}}" alt="">
+                    </div>
+                    <h5>{{title}}</h5>
+                  </a>
+                </li>
+                {{/foreach}}
+
+                {{/get}}
+              </ul>
+            </div>
+          </div>
+          {{#post}}
+          {{#next_post}}
+          <div class="item next uk-card uk-card-default">
+            <div class="uk-card-body">
+              <span>下一篇</span>
+              <a href="{{url}}">{{title}}</a>
+              <time>{{date published_at format="YYYY-mm-DD"}}</time>
+            </div>
+          </div>
+          {{/next_post}}
+          {{/post}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,28 @@
+{{!--
+This template is used for the author page.
+--}}
+
+{{!-- The tag below means: insert everything in this file
+into the {body} of the default.hbs template --}}
+{{!< default}}
+
+<div class="wt-main wp">
+  {{!-- Everything inside the #author tags pulls data from the author --}}
+  {{#author}}
+  <div class="uk-article uk-margin" data-aos="fade-down">
+    <h1 class="uk-article-title">{{name}}</h1>
+  </div>
+  </section>
+  {{/author}}
+  
+  <main>
+    <div class="l-content">
+      <div class="l-wrapper" data-aos="fade-up" data-aos-delay="300">
+        <div class="l-grid centered">
+          {{!-- The tag below iterates over all the posts --}}
+          {{> "loop"}}
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

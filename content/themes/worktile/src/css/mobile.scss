@@ -1,0 +1,32 @@
+@media (max-width: 640px) {
+  .wt-header {
+    padding: 0 10px;
+    .wt-logo {
+      >img {
+        height: 25px;
+      }
+    }
+    
+  }
+
+  .wt-headlines-img{
+    height: 160px;
+  }
+  .wt-headlines-title{
+    padding-top: 0;
+  }
+  .wt-main {
+    padding: 0 10px;
+  }
+  .uk-card-body{
+    padding: 20px;
+  }
+  .wt-content-post{
+    padding-top: 0px;
+    .uk-article-title{
+      font-size: 26px;
+      line-height: 1.4;
+    }
+  }
+  
+}
